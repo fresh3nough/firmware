@@ -301,6 +301,11 @@ void InputBroker::Init()
         userConfig.longPress = INPUT_BROKER_SELECT;
         userConfig.longPressTime = 500;
         userConfig.longLongPress = INPUT_BROKER_SHUTDOWN;
+        // Also enable double and triple press mappings on devices with a screen so
+        // users can trigger ad-hoc ping (double press) and GPS toggle (triple press)
+        // using the hardware button. This is useful for devices like the Heltec T114.
+        userConfig.doublePress = INPUT_BROKER_SEND_PING;
+        userConfig.triplePress = INPUT_BROKER_GPS_TOGGLE;
         UserButtonThread->initButton(userConfig);
     } else {
         ButtonConfig userConfigNoScreen;
